@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.sass';
+import Footer from './components/footer/Footer';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
       <ul>
         {tasks.map(task=> <li>task</li>)}
       </ul>
-      <footer></footer>
+      <Footer/>
     </div>
   );
 }
