@@ -3,7 +3,7 @@ import './App.sass';
 import TaskList from './components/taskList/TaskList';
 import Footer from './components/footer/Footer';
 
-function App() {
+const App= () => {
 
   const title: string = "TO DO";
   const tasks: string[] = ["task1", "task2"];

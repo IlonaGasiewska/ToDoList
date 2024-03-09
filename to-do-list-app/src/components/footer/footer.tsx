@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.sass';
 
-function Footer() {
+const Footer = () => {
 
   return (
     <p className='Footer'>Drag and drop to render list</p>
