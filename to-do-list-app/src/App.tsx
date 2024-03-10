@@ -11,7 +11,7 @@ const App = () => {
 
   const title: string = "TO DO";
   const [inputValue, setInputValue] = useState("");
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([...JSON.parse(localStorage.tasks)]);
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -42,7 +42,7 @@ const App = () => {
       <div className='app-container'>
         <h1>{title}</h1>
           <Form handleInputUpdate={handleInputUpdate} addTask={addTask}/>
-          <TaskList tasks = {JSON.parse(localStorage.tasks)} deleteItem={deleteItem} />
+          <TaskList tasks = {tasks} deleteItem={deleteItem} />
         </div>
       <Footer/>
     </div>
