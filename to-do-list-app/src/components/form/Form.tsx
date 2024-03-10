@@ -1,8 +1,8 @@
 import './Form.sass';
 
 // interface Props {
-//     handleInputUpdate : any,
-//     addTask: any
+//     handleInputUpdate : void,
+//     addTask: void,
 // }
 
 const Form = (props: any)  => {

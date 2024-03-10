@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.sass';
 import TaskList from './components/taskList/TaskList';
 import Form from './components/form/Form';
-import Footer from './components/footer/Footer';
+import Footer from './components/footer/footer';
 import { Task } from './types/types';
 import img from "./img/background-pgoto.jpg"
 
@@ -17,8 +17,12 @@ const App = () => {
   }
 
   const addTask = () => {
-    const id = tasks.length === 0 ?  0 : (tasks[tasks.length - 1].id + 1);
-    setTasks(prev =>[{id: id, name: inputValue}, ...prev]);
+    const taskId: number = tasks.length === 0 ? 0 : tasks[tasks.length - 1].id + 1;
+    setTasks(prev =>[{id: taskId, name: inputValue}, ...prev]);
+  }
+
+  const deleteItem = (id : number) => {
+    setTasks(prev => prev.filter(task => task.id))
   }
 
   return (
@@ -27,7 +31,7 @@ const App = () => {
       <div className='app-container'>
         <h1>{title}</h1>
           <Form handleInputUpdate={handleInputUpdate} addTask={addTask}/>
-          <TaskList tasks = {tasks}/>
+          <TaskList tasks = {tasks} deleteItem={deleteItem} />
         </div>
       <Footer/>
     </div>
