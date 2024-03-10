@@ -4,7 +4,7 @@ import './Footer.sass';
 const Footer = () => {
 
   return (
-    <p className='Footer'>Drag and drop to render list</p>
+    <p className='Footer'>Organize your day!</p>
   );
 }
 
