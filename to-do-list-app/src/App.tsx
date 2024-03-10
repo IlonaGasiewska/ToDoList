@@ -15,7 +15,6 @@ const App = () => {
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    console.log(localStorage)
   }, [tasks]);
 
   const handleInputUpdate = (event : any)=>{
@@ -34,7 +33,6 @@ const App = () => {
       prev.filter((task) => task.id !== taskId)
     );
   };
-
 
   return (
     <div className="App">
