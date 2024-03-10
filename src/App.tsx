@@ -5,17 +5,12 @@ import Form from './components/form/Form';
 import Footer from './components/footer/footer';
 import { Task } from './types/types';
 import img from "./img/background-pgoto.jpg"
-import { useEffect } from 'react';
 
 const App = () => {
 
   const title: string = "TO DO";
   const [inputValue, setInputValue] = useState("");
-  const [tasks, setTasks] = useState<Task[]>([...JSON.parse(localStorage.tasks)]);
-
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const handleInputUpdate = (event : any)=>{
     setInputValue(event.target.value);
@@ -25,6 +20,7 @@ const App = () => {
     if (inputValue !== "") {
       const id: number = tasks.length === 0 ? 0 : tasks[tasks.length - 1].id + 1;
       setTasks(prev =>[ ...prev, {id, name: inputValue},]);
+      setInputValue("");
     }
   }
 
@@ -39,7 +35,7 @@ const App = () => {
       <img src={img} alt="" />
       <div className='app-container'>
         <h1>{title}</h1>
-          <Form handleInputUpdate={handleInputUpdate} addTask={addTask}/>
+          <Form handleInputUpdate={handleInputUpdate} addTask={addTask} inputValue={inputValue} />
           <TaskList tasks = {tasks} deleteItem={deleteItem} />
         </div>
       <Footer/>
