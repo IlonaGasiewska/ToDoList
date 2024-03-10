@@ -17,13 +17,18 @@ const App = () => {
   }
 
   const addTask = () => {
-    const taskId: number = tasks.length === 0 ? 0 : tasks[tasks.length - 1].id + 1;
-    setTasks(prev =>[{id: taskId, name: inputValue}, ...prev]);
+    if (inputValue !== "") {
+      const id: number = tasks.length === 0 ? 0 : tasks[tasks.length - 1].id + 1;
+      setTasks(prev =>[ ...prev, {id, name: inputValue},]);
+    }
   }
 
-  const deleteItem = (id : number) => {
-    setTasks(prev => prev.filter(task => task.id))
-  }
+  const deleteItem = (taskId :number) => {
+    setTasks((prev) =>
+      prev.filter((task) => task.id !== taskId)
+    );
+  };
+
 
   return (
     <div className="App">
