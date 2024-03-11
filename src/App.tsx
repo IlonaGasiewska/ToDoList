@@ -1,16 +1,17 @@
 import React, { useState , useEffect } from 'react';
-import './App.sass';
-import TaskList from './components/taskList/TaskList';
-import Form from './components/form/Form';
-import Footer from './components/footer/footer';
-import { Task } from './types/types';
-import img from "./img/background-pgoto.jpg"
+
+import { TaskList } from './components/TaskList/TaskList';
+import { Form } from './components/Form/Form';
+import { Footer } from './components/Footer/footer';
+import { TaskTypes } from './types/types';
+
+import './App.scss';
 
 const App = () => {
 
   const title: string = "TO DO";
   const [inputValue, setInputValue] = useState("");
-  const [tasks, setTasks] = useState<Task[]>(JSON.parse(localStorage.getItem("tasks")!) || []);
+  const [tasks, setTasks] = useState<TaskTypes[]>(JSON.parse(localStorage.getItem("tasks")!) || []);
 
   const handleInputUpdate = (value: string)=>{
     setInputValue(value);
@@ -35,7 +36,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <img src={img} alt="" />
+      <div className='photo' style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/background-photo.jpg'})` }}></div>
       <div className='app-container'>
         <h1>{title}</h1>
           <Form handleInputUpdate={(e: React.ChangeEvent<HTMLInputElement>)=>{handleInputUpdate(e.target.value)}} addTask={()=>{addTask(inputValue)}} inputValue={inputValue} />

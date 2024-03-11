@@ -1,13 +1,7 @@
-import './Form.sass';
-
-type FormTypes = {
-    handleInputUpdate:(e: React.ChangeEvent<HTMLInputElement>) => void,
-    addTask: () => void,
-    inputValue: string
-}
+import { FormTypes } from '../../types/types';
+import './Form.scss';
 
 const Form = ({handleInputUpdate, addTask, inputValue} : FormTypes)  => {
-
   return (
       <form>
         <input value={inputValue} onChange={handleInputUpdate} type="text"/>
@@ -16,4 +10,4 @@ const Form = ({handleInputUpdate, addTask, inputValue} : FormTypes)  => {
   );
 }
 
-export default Form;
+export { Form };

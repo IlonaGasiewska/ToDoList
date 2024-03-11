@@ -1,17 +1,13 @@
-import './TaskList.sass';
-import { Task } from '../../types/types';
+import { TaskListTypes } from '../../types/types';
+import { TaskTypes } from '../../types/types';
+import './TaskList.scss';
  
-type TaskListProps = {
-  tasks: Task[],
-  deleteTask: (taskId: number) =>void
-}
- 
-const TaskList = ({deleteTask, tasks}:TaskListProps) => {
+const TaskList = ({deleteTask, tasks}:TaskListTypes) => {
   return (
     <div className="TaskList">
       {tasks.length === 0 && <p>Nothing to do</p>}
       <ul className="TaskList">
-        {tasks.map((task: Task )=> (
+        {tasks.map((task: TaskTypes )=> (
           <li onClick={()=>{deleteTask(task.id)}} key={task.id}>{task.name}</li>
         ))}
       </ul>
@@ -19,4 +15,4 @@ const TaskList = ({deleteTask, tasks}:TaskListProps) => {
   );
 }
  
-export default TaskList;
+export { TaskList };
