@@ -1,4 +1,4 @@
-import './Footer.sass';
+import './Footer.scss';
 
 const Footer = () => {
   return <p className="Footer">Organize your day!</p>;

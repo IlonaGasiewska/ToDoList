@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import { TaskList } from './components/TaskList/TaskList';
-import { Form } from './components/Form/Form';
-import { Footer } from './components/Footer/footer';
+import { TaskList } from './components/taskList/TaskList';
+import { Form } from './components/form/Form';
+import { Footer } from './components/footer/Footer';
 import { TaskTypes } from './types/types';
+
+import * as crypto from 'crypto';
 
 import './App.scss';
 
