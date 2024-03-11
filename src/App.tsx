@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import './App.sass';
 import TaskList from './components/taskList/TaskList';
 import Form from './components/form/Form';
@@ -10,7 +10,7 @@ const App = () => {
 
   const title: string = "TO DO";
   const [inputValue, setInputValue] = useState("");
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>(JSON.parse(localStorage.tasks) || []);
 
   const handleInputUpdate = (event : any)=>{
     setInputValue(event.target.value);
@@ -20,7 +20,7 @@ const App = () => {
     if (inputValue !== "") {
       const id: number = tasks.length === 0 ? 0 : tasks[tasks.length - 1].id + 1;
       setTasks(prev =>[ ...prev, {id, name: inputValue},]);
-      setInputValue("");
+      setInputValue("")
     }
   }
 
@@ -29,6 +29,11 @@ const App = () => {
       prev.filter((task) => task.id !== taskId)
     );
   };
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    console.log(localStorage)
+  }, [tasks]);
 
   return (
     <div className="App">
