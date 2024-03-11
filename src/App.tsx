@@ -10,7 +10,7 @@ const App = () => {
 
   const title: string = "TO DO";
   const [inputValue, setInputValue] = useState("");
-  const [tasks, setTasks] = useState<Task[]>(JSON.parse(localStorage.tasks) || []);
+  const [tasks, setTasks] = useState<Task[]>(JSON.parse(localStorage.getItem("tasks")!) || []);
 
   const handleInputUpdate = (event : any)=>{
     setInputValue(event.target.value);
