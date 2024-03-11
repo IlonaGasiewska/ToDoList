@@ -1,17 +1,17 @@
 import './Form.sass';
 
-// interface Props {
-//     handleInputUpdate : void,
-//     addTask: void,
-//     inpuValue: string
-// }
+type FormTypes = {
+    handleInputUpdate:(e: React.ChangeEvent<HTMLInputElement>) => void,
+    addTask: () => void,
+    inputValue: string
+}
 
-const Form = (props: any)  => {
+const Form = ({handleInputUpdate, addTask, inputValue} : FormTypes)  => {
 
   return (
       <form>
-        <input value={props.inputValue} onInput={props.handleInputUpdate} type="text"/>
-        <button type='button' onClick={props.addTask}>add</button>
+        <input value={inputValue} onChange={handleInputUpdate} type="text"/>
+        <button type='button' onClick={addTask}>add</button>
       </form>
   );
 }

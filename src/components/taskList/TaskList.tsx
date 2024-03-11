@@ -1,18 +1,18 @@
 import './TaskList.sass';
 import { Task } from '../../types/types';
  
-interface TaskListProps {
+type TaskListProps = {
   tasks: Task[],
-  deleteItem: any
+  deleteTask: (taskId: number) =>void
 }
  
-const TaskList = (props:TaskListProps) => {
+const TaskList = ({deleteTask, tasks}:TaskListProps) => {
   return (
     <div className="TaskList">
-      {props.tasks.length === 0 && <p>Nothing to do</p>}
+      {tasks.length === 0 && <p>Nothing to do</p>}
       <ul className="TaskList">
-        {props.tasks.map((task: Task )=> (
-          <li onClick={()=>{props.deleteItem(task.id)}} key={task.id}>{task.name}</li>
+        {tasks.map((task: Task )=> (
+          <li onClick={()=>{deleteTask(task.id)}} key={task.id}>{task.name}</li>
         ))}
       </ul>
     </div>

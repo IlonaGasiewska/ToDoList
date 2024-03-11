@@ -12,19 +12,18 @@ const App = () => {
   const [inputValue, setInputValue] = useState("");
   const [tasks, setTasks] = useState<Task[]>(JSON.parse(localStorage.getItem("tasks")!) || []);
 
-  const handleInputUpdate = (event : any)=>{
-    setInputValue(event.target.value);
-  }
+  const handleInputUpdate = (value: string)=>{
+    setInputValue(value);
+  };
 
-  const addTask = () => {
-    if (inputValue !== "") {
-      const id: number = tasks.length === 0 ? 0 : tasks[tasks.length - 1].id + 1;
-      setTasks(prev =>[ ...prev, {id, name: inputValue},]);
-      setInputValue("")
+  const addTask = (task: string) => {
+    if (task.trim() !== "") {
+      setTasks(prev =>[ ...prev, {id: Date.now(), name: task},]);
+      setInputValue("");
     }
-  }
+  };
 
-  const deleteItem = (taskId :number) => {
+  const deleteTask = (taskId :number) => {
     setTasks((prev) =>
       prev.filter((task) => task.id !== taskId)
     );
@@ -39,8 +38,8 @@ const App = () => {
       <img src={img} alt="" />
       <div className='app-container'>
         <h1>{title}</h1>
-          <Form handleInputUpdate={handleInputUpdate} addTask={addTask} inputValue={inputValue} />
-          <TaskList tasks = {tasks} deleteItem={deleteItem} />
+          <Form handleInputUpdate={(e: React.ChangeEvent<HTMLInputElement>)=>{handleInputUpdate(e.target.value)}} addTask={()=>{addTask(inputValue)}} inputValue={inputValue} />
+          <TaskList tasks = {tasks} deleteTask={deleteTask} />
         </div>
       <Footer/>
     </div>
