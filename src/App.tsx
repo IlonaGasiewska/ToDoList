@@ -32,7 +32,6 @@ const App = () => {
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    console.log(localStorage)
   }, [tasks]);
 
   return (
